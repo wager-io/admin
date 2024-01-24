@@ -1,0 +1,175 @@
+.kBjSXI {
+    position: fixed;
+    z-index: 1000;
+    inset: 0px;
+    background-color: rgba(0, 0, 0, 0.7);
+    filter: none !important;
+}
+
+#right-bar{
+    transition: left 0.2s linear 0s;
+}
+
+
+.ttu {
+    text-transform: uppercase;
+}
+
+
+
+.hTTvsjh{
+    color: #f5f6f7;
+}
+
+/*=========================================================== Main screen ================================================ */
+@media only screen and ( min-width : 650px) {
+    .mobile {
+        display: none;
+    }
+    .ePAxUv {
+        margin-top: 4rem;
+    }
+    .error-message{
+    position: fixed;
+    background: #24262B;
+    width: 400px;
+    left: 6px;
+    bottom: 2%;
+    border-radius: 20px;
+
+    padding: 24px 15px;
+    margin: 10px;
+    z-index: 99999;
+}
+    main{
+        width: 100%;
+        margin: 10px 0;
+        transition: left 0.2s linear 0s;
+    }
+    .app{
+        position: relative;
+        display: flex;
+        transition: 0.4s ease-in;
+    }
+    #side-bar{
+        height: 100vh;
+        background: var(--background-color);
+    }
+    #menu{
+        display: block;
+        width: 0.1764%;
+        position: relative;
+    }
+    .menu{
+        border: none;
+        width: 1.875rem;
+        height: 1.875rem;
+        border-radius: 0.9375rem;
+        background-color: rgb(26, 28, 32);
+        box-shadow: transparent 0px 2px 4px 0px;
+        z-index: 203;
+        position: fixed;
+        cursor: pointer;
+        top: 16px;
+        transition: left 0.2s linear 0s;
+    }
+    #right-bar{
+        transition: left 0.2s linear 0s;
+    }
+    .menu:hover{
+        background-color: rgb(46, 49, 56);
+    }
+    .menu img{
+        width: 0.625rem;
+        height: 0.625rem;
+    }
+    footer{
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+    #footer{
+        display: none;
+    }
+}
+/* ============================= mobile screen ====================================================== */
+@media only screen and ( max-width : 650px) {
+    #main{
+        display: none;
+    }
+    .error-message {
+        position: fixed;
+        background: #24262B;
+        width: 97%;
+        left: 6px;
+        top: 2%;
+        border-radius: 20px;
+        padding: 24px 15px;
+        margin: 0;
+        z-index: 910;
+    }
+    .footer-general{
+        display: none;
+    }
+    #right-bar{
+        width: 100%;
+    }
+    .ePAxUv{
+        margin-top: 8.375rem;
+    }
+}
+
+.cBmlor {
+    display: block;
+    width: 100%;
+    border-radius: 6.25rem;
+    height: 3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.36, 0.66, 0.04, 1) 0s;
+}
+
+.cBmlor > .button-inner {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+
+.cuPxwd {
+    padding: 2.5rem 0px;
+    color: rgba(153, 164, 176, 0.6);
+    line-height: 1;
+    text-align: center;
+    height: 100%;
+    min-height: 16.25rem;
+    position: relative;
+}
+.ePAxUv > .empty {
+    min-height: 80vh;
+}
+.ePAxUv {
+    margin-top: 4rem;
+}
+.cuPxwd img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -6.875rem 0px 0px -6.25rem;
+    width: 12.5rem;
+    height: 12.5rem;
+}
+.cuPxwd .msg {
+    position: absolute;
+    z-index: 1;
+    line-height: 1.25rem;
+    left: 50%;
+    width: 17.5rem;
+    top: 50%;
+    margin-top: 3.75rem;
+    margin-left: -8.75rem;
+}

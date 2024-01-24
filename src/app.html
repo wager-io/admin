@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/apple-touch-icon.png" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+		<title>Wager admin</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,500;0,600;0,700;1,100;1,500;1,600&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;0,400;0,700;1,100&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,700;1,100&display=swap" rel="stylesheet">
+		
+		<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+		%sveltekit.head%
+
+		<style>
+				*{
+				padding: 0;
+				margin: 0;
+				font-family: Poppins;
+				text-decoration: none;
+				box-sizing: border-box;
+			}
+			*, *:before, *:after {
+				box-sizing: border-box;
+			}
+			/* Chrome, Safari, Edge, Opera */
+				input::-webkit-outer-spin-button,
+				input::-webkit-inner-spin-button {
+				-webkit-appearance: none;
+				margin: 0;
+			}
+
+			/* Firefox */
+			input[type=number] {
+				-moz-appearance: textfield;
+			}
+			body{
+				padding: 0;
+				margin: 0;
+				background-color: #24262b;
+				font-size: .875rem;
+			}
+			
+			body, input, textarea, a, button {
+				font-family: Montserrat,-apple-system,Framedcn,Helvetica Neue, Poppins, Condensed,DisplayRegular,Helvetica,Arial,PingFang SC,Hiragino Sans GB,WenQuanYi Micro Hei,Microsoft Yahei,sans-serif;
+			}
+			::-webkit-scrollbar{
+				display: none;
+			}
+			textarea, input{
+				outline: none;
+			}
+			button {
+				border: none;
+				padding: 0;
+				user-select: none;
+				cursor: pointer;
+				background-color: transparent;
+			}
+
+			body, input, textarea, a, button {
+				color: var(--text-color);
+			}
+			:root {
+				--text-color: #75808c;
+				--primary-color: #9900CC ;
+				--background-color: #24262B ;
+				--placeholder-color: #75808c;
+				--autofill-color: #f5f6f7;
+				--scroll-color: #24262B;
+				--btn-color:rgb(88, 26, 196);
+				--btn-image:conic-gradient(from 1turn, rgb(74, 43, 128), #9900CC )
+
+				--border-radius: 18px;
+        --card-bg-1: rgb(28, 30, 34);
+        --card-bg-2: rgb(49, 52, 60);
+        --card-bg-3: white;
+        --card-bg-5: rgb(30, 32, 36);
+        --card-bg-4: rgb(36, 38, 43);
+        --card-bg-6: rgb(25, 27, 30);
+        --card-bg-7: rgba(0, 0, 0, 0.3);
+        --card-bg-8: rgba(36, 38, 43, 0.5);
+        --card-bg-9: rgb(26, 28, 32);
+        --card-bg-10: rgb(43, 47, 54);
+        --card-bg-11: rgba(49, 52, 60, 0.4);
+        --card-bg-12: rgb(36, 38, 43);
+        --card-bg-13: rgba(49, 52, 60, 0.6);
+        --text-1: rgb(234, 234, 234);
+        --text-3: rgb(229, 233, 237);
+        --text-4: rgb(153, 164, 176);
+        --text-5: rgb(245, 246, 247);
+        --text-6: rgba(153, 164, 176, 0.6);
+        --text-7: rgb(152, 167, 181);
+        --text-8: rgb(223, 227, 230);
+        --border-1: rgb(45, 48, 53);
+        --border-2: rgba(49, 52, 60, 0.5);
+        --active-tab: linear-gradient(
+          to left,
+          rgb(85, 89, 102),
+          rgb(85, 89, 102),
+          rgb(88, 174, 20)
+        );
+        --tab-nav-bg: rgba(49, 52, 60, 0.7);
+        --original-bg: rgb(45, 48, 53);
+        --original-text: rgba(153, 164, 176, 0.8);
+        --curve-bg-1: linear-gradient(
+          to right,
+          rgb(28, 30, 34),
+          rgb(28, 30, 34)
+        );
+        --curve-bg-img-1: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJoAAABwCAMAAADR/pnBAAAAn1BMVEUAAAAcHiIdHyIdHiIcHiIfIiVwcHAdHiIcHiIcHiMcHyIlLjgcHiIcHiIcHyIcHyIcHyIdHyMeHiQdHyMeHyQcHyIcHiIcHiIcHiIdHyIdHiIhISYiIickJCskJCQ8PDwcHiIcHiIdHyIdHyMcHiIdHyMcHyQeISQoKCgcHiMcHiIcHiIeHiMeICUfHyQfIiUcHyIcHiIdHiIgJSUcHiJEtYpkAAAANHRSTlMA/o7vuSUC+OqQWgnz38+tnHBTQzrXy8O9k4oeFhENBPyypnt2amNNBtqigUs2MSzj0Zcb0lGzEwAAAgJJREFUeNrN3FlS4lAARuHEhAQTQEaZZ0TUVns4+19bN9KUIGrBC5x/Aae+SiWVm5cEfLNSudK56WWF4DLjiEWdp0vwOHKVRT848zh6YdwMzjpO2XlxnLb4jDcdJy6tJV+ULk6D9hcXTkCjlH1aMtAIF5+VFDToJoclCY1pflCy0Lg5uG4aGlcfSx4adx9KItrkx35JRKM42CuZaNzslVQ06rslF6043Cm5aDzulGS08OW9JKPRfi/ZaDtPgo5WXm1LOhqLbclHi7bvBB+N3/9LQtrkdVMS0og3JSONzelISWuN1yUlbXPgddLeTiBO2ts3jJSWFoJASlufxa00Gl5aJdHSWHppP3MtjScvLe1racy8tPBZS6PtpZF5aeVcS2PupZUGWhpVLy181dKIvTTuvbTWWEuj5qVFQy2Nay8tLWhpTL00Gl5aJdHSWHppxZGWRs9LS/taGjMvjaaXduulkXlp5VxLY+6llQZaGlUvLXzR0uh4adS9tIexlkbNS4uGWhpdL21S0NKYemk0vLRfiZbGnZdWHGlpdL20sKml8ZBrafS8tPBZS6M10tKIx1oaVS+NuZcWZloaaV1LI6xpadDz0pittDTafS2NaKmlQfxHSyPKtDS4vdfS1jgt7R+uvrLSIKo2EikNKHYbIykNCFuPtWaupO38oKN6vd7VZn8B7LFgIf7sh1IAAAAASUVORK5CYII=);
+        --curve-bg-img-2: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIwAAADUCAMAAAB5wzuWAAAAk1BMVEUAAAAeICQgKi0eICQeICQeISUeISUeISUeISUfICUpLi5OTk4eICQfICQfIiUgIiYgIiYeICUfICQeICUeICQfICUhIicfICUeISQfISQfISQjIyktLS0eICQeICQeICQfISQfISUfISUfISUeIiYhIychJCciIismJiaAgIAfICQeICQfICUfICUfISUhISYeICRbUIDiAAAAMHRSTlMA9w/v/fu6opJmBwPbxks+NPPp5uFfJtfSeFkVC87AmYaAc1JCKyMdGgK2sKyeai/GNLYaAAACYElEQVR42uzOS07CUABA0bavpdBaoFBAfsof/OHd/+qMYWZiogPjHfSs4ET8WBaaKp8Piujv8Fvx8ySJbv4/A9SbW0eRgbD97EgyEHpRpMlAvhJluJ+KMoS+KEM6EWVIr6IMzE0ZNqYMj0+iDHkpyvBSiDJ0VqIMVSLKcL8UZbg7izI0U1GG0bsoQxiKMtQHUYZ4L8qQLUQZ0qsoA3NTho0pQ9eUIS9FGV4KUYbOSpShSkQZ1ktRhtlZlKE5iTKMj6IMYSjKUB9EGeK+KEO2EGVIe6IM7EwZtqYMXVOGvBRleC1EGTorUYYqEWVYL0UZZhdRhuYkyjA+ijKEoShDPRBliPuiDNlClCHtiTKwM2XYmjJ0TRneSlGG10KU4bkQZXhIRBnWS1GG2UWU4e4kyjA+ijKMhqIMYSDKEPdFGbK9KEO6EGVI96IM8UCUYXQRZahKUYadKVOfRRlyUyadijK8mTJxIsowMWU6pkxciDIcTJm5KZObMpUp05gywZTJTBnaTJtpM23mizbznTbz0c4d2zAIBEAQNEigf/ECCwQmgpj+G3QD3tS6YLeCaeCOEkOJocRQYigxlBhKDCWGEkOJocRQYigxlBhKDCWGEkOJocRQYigxlBhKDCWGEkOJocRQYigxlBhKDCWGEkOJocRQYigxlBhKzL/qkjBrEqYlYcYkTEnC1CTMEYTZkhamdxJmCcK0pL32HoQ5nyDMHHQ4cAX9QgzvIEwN+hIpQS8r45SD+fQ5Zzhjn3MTVKaYA6Wh5vxcXTkPYOccc9TW9ifkwm67l4Dbw25tY6nH61dfgXj42O/H5kkAAAAASUVORK5CYII=);
+        --vip-img: url(https://static.nanogames.io/assets/flag_bg.fcc40855.png);
+        --vip-card-bg: rgba(49, 52, 58, 0.8);
+        --affiliate-bg: rgb(23, 24, 27);
+        --affiliate-img-1: url(https://static.nanogames.io/assets/graph.line.a4a20112.png);
+        --bxs-1: linear-gradient(rgb(17, 20, 21), rgba(36, 38, 43, 0));
+			}
+		</style>
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>
