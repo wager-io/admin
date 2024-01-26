@@ -18,7 +18,6 @@ const handleMembers = (async()=>{
    })
    .then((response)=>{
     membership.set(response.data.data)
-    console.log(response.data)
       loading = false
    })
    .catch((error)=>{
@@ -76,7 +75,7 @@ const handleCancel = (()=>{
                       <th>Total Wagered</th>
                       <th>Total GGR</th>
                       <th>Chat Messages</th>
-                      <th>USDT + PPD + PPL</th>
+                      <th>BTC + WGD + ETH</th>
                       <th>REG. Date & Time</th>
                       <th>1st Deposit Date & Time</th>
                       <th>Last Deposit Date & Time</th>

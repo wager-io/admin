@@ -2,28 +2,25 @@
 export let data;
 import { browser } from '$app/environment';
 import { onMount } from "svelte";
+import { routes } from "$lib/store/routes"
 import { goto } from '$app/navigation';
-import { profileStore } from '$lib/store/profile';
+import { profileStore, handleisLoggin } from '$lib/store/profile';
 import { handleAuthToken } from '$lib/store/routes';
+import { handleAdminProfile} from "$lib/index"
+$: routes.set(data.route)
 
-
-setTimeout(()=>{
-    if(data.preloaed === null){
-         window.location.href = ("/")
-    }
-},2000)
-
-onMount(()=>{
-    if(!data.token){
+onMount(async()=>{
+    handleAuthToken.set(data.token.accessToken)
+    let {responcse, $handleisLoggin} = await handleAdminProfile($handleAuthToken)
+    handleisLoggin.set($handleisLoggin)
+    if(responcse === "No user"){
         goto("/login")
     }
-    else if(data.route === "/(auth)/login" || data.route === "/(auth)/pin" && data.token){
+    else if(data.route === "/(auth)/login" || data.route === "/(auth)/pin" && $handleAuthToken){
         goto("/")
     }
     else{
-
-        profileStore.set(data.token.user)
-        handleAuthToken.set(data.token.accessToken)
+        profileStore.set(responcse)
     }
 })
 
@@ -159,10 +156,10 @@ const handleMenu = () => {
             </div>
         </div>
     {/if}
-    {#if !data.preloaed}
+    {#if $handleisLoggin}
         <div class="preloading">
             <div class="gyuys">
-                <img class="coin-icon" alt="" src="https://res.cloudinary.com/dxwhz3r81/image/upload/v1699447809/preload_b2jdw0.jpg">
+                <img class="coin-icon" alt="" src="https://res.cloudinary.com/dxwhz3r81/image/upload/v1706191229/photo_2024-01-25_07-59-49_tyeeu0.jpg">
             </div>
         </div>
     {/if}
@@ -187,7 +184,7 @@ const handleMenu = () => {
     </main>
     {#if data.route !== "/(auth)/login" && data.route !== "/(auth)/pin" && data.route !== "/members" && data.route !== "/reports"}
         <footer>
-            <Footer />
+            <!-- <Footer /> -->
         </footer>
     {/if}
     </div>

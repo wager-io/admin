@@ -6,6 +6,7 @@ import RiSystemArrowRightSLine from "svelte-icons-pack/ri/RiSystemArrowRightSLin
 import SiChakraui from "svelte-icons-pack/si/SiChakraui";
 import BsCoin from "svelte-icons-pack/bs/BsCoin";
 import { browser } from '$app/environment';
+import { goto } from "$app/navigation"
 import IoPerson from "svelte-icons-pack/io/IoPerson";
 import BiMedal from "svelte-icons-pack/bi/BiMedal";
 import IoPersonAddSharp from "svelte-icons-pack/io/IoPersonAddSharp";
@@ -38,14 +39,14 @@ async function fetchData() {
         .catch((error) => {
             console.log(error)
         })
-    is_loading = true
-    await axios.post(`${URL}/api/stats/global`,{
-       user_id: $page.params.slug
-    })
-    .then(res =>{
-        is_loading = false
-        userStatistics.set(res.data)
-    })
+    // is_loading = true
+    // await axios.post(`${URL}/api/stats/global`,{
+    //    user_id: $page.params.slug
+    // })
+    // .then(res =>{
+    //     is_loading = false
+    //     userStatistics.set(res.data)
+    // })
 }
 
 let is_edit = false
@@ -78,6 +79,23 @@ $:{
         is_mobile = false
     }
 }
+
+const handleBlock = (async(event)=>{
+    is_loadingel = true
+    const is_suspend = event.is_suspend ? false : true
+    const user_id = event.user_id 
+    await axios.post(`${URL}/api/users/suspend`,{
+        user_id,is_suspend
+    })
+    .then(res => {
+        is_loadingel = false
+        users_profile.set(res.data[0])
+    })
+    .catch((error) => {
+        console.log(error)
+        is_loadingel = false
+    })
+})
 
 
 </script>
@@ -241,19 +259,19 @@ $:{
                         {#if $profileStore.user_id !== $page.params.slug}
                         <div class="actions">
                             {#if !$users_profile.refuse_tips}
-                            <button class="tip button">
+                            <button on:click={()=>handleBlock($users_profile)} class="tip button">
                                 <span style="margin-right: 0.5rem; margin-top: 4px">
-                                    <Icon src={FaSolidMoneyBillWave}  size="15"  color="rgba(153, 164, 176, 0.6)" />
+                                    <Icon src={IoPersonAddSharp}  size="15"  color="rgba(153, 164, 176, 0.6)" />
                                 </span>
-                                 Tip
+                               {$users_profile.is_suspend ? "Unblock" : "Block"}  
                             </button>
                             {/if}
                             {#if !$users_profile.refuse_friends_request}
-                            <button class="button add">
+                            <button on:click={()=> goto(`/transactions/bill?id=${$users_profile.user_id}&coin=BTC`)} class="button add">
                                 <span  style="margin-right: 0.5rem">
-                                    <Icon src={IoPersonAddSharp}  size="15"  color="rgba(153, 164, 176, 0.6)" />
+                                    <Icon src={FaSolidMoneyBillWave}  size="15"  color="rgba(153, 164, 176, 0.6)" />
                                 </span>
-                                    Add
+                                    Transactions
                             </button>
                             {/if}
                          </div>
@@ -359,7 +377,7 @@ $:{
                                         <Icon src={SiChakraui}  size="30"  color="rgba(153, 164, 176, 0.8)" className="sc-gsDKAQ hxODWG icon right right-fold" />
                                     </span>
                                     Total Wins</div>
-                                <div class="item-value">{$userStatistics.total_win}</div>
+                                <div class="item-value">{0}</div>
                             </div>
 
                             <div class="item">
@@ -368,7 +386,7 @@ $:{
                                         <Icon src={BsCoin}  size="18"  color="rgb(238, 183, 17)" className="custom-icon" />
                                     </span>
                                     Total Bets</div>
-                                <div class="item-value">{$userStatistics.total_bet}</div>
+                                <div class="item-value">{0}</div>
                             </div>
                             <div class="item">
                                 <div class="item-type darken">
@@ -377,7 +395,7 @@ $:{
                                     </span>
                                     Total Wagered
                                 </div>
-                                <div class="item-value">{$users_profile.total_wagered} USD</div>
+                                <div class="item-value">{0} USD</div>
                             </div>
                         </div>
                     </div>
@@ -497,7 +515,7 @@ $:{
                                         <Icon src={SiChakraui}  size="30"  color="rgba(153, 164, 176, 0.8)" className="sc-gsDKAQ hxODWG icon right right-fold" />
                                     </span>
                                     Total Wins</div>
-                                <div class="item-value">{$userStatistics.total_win}</div>
+                                <div class="item-value">{0}</div>
                             </div>
 
                             <div class="item">
@@ -506,7 +524,7 @@ $:{
                                         <Icon src={BsCoin}  size="18"  color="rgb(238, 183, 17)" className="custom-icon" />
                                     </span>
                                     Total Bets</div>
-                                <div class="item-value">{$userStatistics.total_bet}</div>
+                                <div class="item-value">{0}</div>
                             </div>
                             <div class="item">
                                 <div class="item-type darken">
@@ -515,7 +533,7 @@ $:{
                                     </span>
                                     Total Wagered
                                 </div>
-                                <div class="item-value">{$users_profile.total_wagered} USD</div>
+                                <div class="item-value">{0} USD</div>
                             </div>
                         </div>
                     </div>
@@ -653,7 +671,7 @@ $:{
                                         <Icon src={SiChakraui}  size="30"  color="rgba(153, 164, 176, 0.8)" className="sc-gsDKAQ hxODWG icon right right-fold" />
                                     </span>
                                     Total Wins</div>
-                                <div class="item-value">{$userStatistics.total_win}</div>
+                                <div class="item-value">{0}</div>
                             </div>
 
                             <div class="item">
@@ -662,7 +680,7 @@ $:{
                                         <Icon src={BsCoin}  size="18"  color="rgb(238, 183, 17)" className="custom-icon" />
                                     </span>
                                     Total Bets</div>
-                                <div class="item-value">{$userStatistics.total_bet}</div>
+                                <div class="item-value">{0}</div>
                             </div>
                             <div class="item">
                                 <div class="item-type darken">
@@ -671,7 +689,7 @@ $:{
                                     </span>
                                     Total Wagered
                                 </div>
-                                <div class="item-value">{$userStatistics.total_wagered} USD</div>
+                                <div class="item-value">{0} USD</div>
                             </div>
                         </div>
                     </div>
