@@ -35,9 +35,10 @@ export const handleAdminProfile = (async(auth)=>{
     let responcse = ""
     let is_loading = true
     if(auth){
+        handleAuthToken.set(auth.accessToken)
         await axios.get(`${URL}/admin/user/current`,{
             headers:{
-                "Authorization": `Bearer ${auth}`
+                "Authorization": `Bearer ${auth.accessToken}`
             }
         })
         .then((response)=>{

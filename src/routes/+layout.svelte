@@ -10,18 +10,17 @@ import { handleAdminProfile} from "$lib/index"
 $: routes.set(data.route)
 
 onMount(async()=>{
-    handleAuthToken.set(data.token.accessToken)
-    let {responcse, $handleisLoggin} = await handleAdminProfile($handleAuthToken)
-    handleisLoggin.set($handleisLoggin)
-    if(responcse === "No user"){
-        goto("/login")
-    }
-    else if(data.route === "/(auth)/login" || data.route === "/(auth)/pin" && $handleAuthToken){
-        goto("/")
-    }
-    else{
-        profileStore.set(responcse)
-    }
+        let {responcse, $handleisLoggin} = await handleAdminProfile(data.token)
+        handleisLoggin.set($handleisLoggin)
+        if(responcse === "No user"){
+            goto("/login")
+        }
+        else if(data.route === "/(auth)/login" || data.route === "/(auth)/pin" && data.token){
+            goto("/")
+        }
+        else{
+            profileStore.set(responcse)
+        }
 })
 
 import Icon from 'svelte-icons-pack/Icon.svelte';
